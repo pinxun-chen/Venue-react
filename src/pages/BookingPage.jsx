@@ -50,6 +50,7 @@ const BookingPage = () => {
         setSelectedIds([]);
 
         const res1 = await getVenueTimeSlots(venue.id);
+        
         const res2 = await getBookingsByVenueAndDate(venue.id, newDate);
 
         if (res1.status === 200) {
