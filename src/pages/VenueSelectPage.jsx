@@ -17,7 +17,7 @@ const VenueSelectPage = () => {
         const res = await getAllVenues();
         if (res.status === 200) {
             setVenues(res.data);
-        };
+        }
     };
 
     // 搜尋

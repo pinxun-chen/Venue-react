@@ -34,7 +34,7 @@ const BookingPage = () => {
             }
         };
         loadVenue();
-    }, []);
+    }, [venueId]);
 
     // 取得明天的日期 (只能預約明天以後的)
     const getTomorrow = () => {
@@ -54,12 +54,12 @@ const BookingPage = () => {
 
         if (res1.status === 200) {
             setTimeSlots(res1.data);
-        };
+        }
 
         if (res2.status === 200) {
             const paid = res2.data.filter((b) => b.isPaid).map((b) => b.timeSlotId);
             setBookedIds(paid);
-        };
+        }
     };
 
     // 時段勾選

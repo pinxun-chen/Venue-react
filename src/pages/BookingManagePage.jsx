@@ -98,7 +98,7 @@ const BookingManagePage = () => {
     const handleDelete = async (bookingId) => {
         if (!window.confirm("確定要取消這筆預約嗎？")) {
             return;
-        };
+        }
 
         const res = await deleteBooking(bookingId);
 
