@@ -105,6 +105,7 @@ const BookingManagePage = () => {
         if (res?.status === 200) {
             alert("取消成功");
             fetchAll(); // 重新查詢
+            setSearchValue("");
         } else {
             alert("取消失敗");
         }
