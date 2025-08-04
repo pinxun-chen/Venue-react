@@ -168,6 +168,7 @@ const BookingManagePage = () => {
                             <th>Email</th>
                             <th>電話</th>
                             <th>操作</th>
+                            <th>繳費</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -239,6 +240,13 @@ const BookingManagePage = () => {
                                                 style={{ marginLeft: "5px" }}
                                             >
                                                 取消預約
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button
+                                                style={{ marginLeft: "5px" }}
+                                            >
+                                                繳費
                                             </button>
                                         </td>
                                     </>
