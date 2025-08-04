@@ -7,7 +7,7 @@ import {
     createBooking,
 } from "../api";
 
-const BookingPage = () => {
+function BookingPage() {
 
     const { venueId } = useParams();
     const [venue, setVenue] = useState([]); // 從後端撈場地資料
@@ -206,6 +206,6 @@ const BookingPage = () => {
         </div>
 
     );
-};
+}
 
 export default BookingPage;
