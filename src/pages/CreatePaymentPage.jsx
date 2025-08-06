@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getPayProviders, createPayOrder } from "../PayApi";
 
 const CreatePaymentPage = () => {
@@ -8,6 +8,8 @@ const CreatePaymentPage = () => {
 
     const [providers, setProviders] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const navigate = useNavigate();
 
     // getPaySvcProvider
     useEffect(() => {
@@ -35,7 +37,7 @@ const CreatePaymentPage = () => {
             opt_interface: "1",
             data: [
                 {
-                    item_name: "場地租借",
+                    item_name: `${booking.venueName} 場地租借`,
                     unit_price: booking.venuePrice.toString(),
                     unit_count: "1",
                     unit_amount: booking.venuePrice.toString(),
@@ -59,7 +61,7 @@ const CreatePaymentPage = () => {
     if (loading) return <div>載入付款方式中...</div>;
 
     return (
-        <div style={{ padding: "20px" }}>
+        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
             <h2>地點: {booking.venueName}
                 <br /> 日期: {booking.bookingDate}
                 <br /> 時段: {booking.label}
@@ -78,7 +80,12 @@ const CreatePaymentPage = () => {
                     </li>
                 ))}
             </ul>
+
+            <div style={{ marginBottom: "20px" }}>
+                <button onClick={() => navigate("/bookings")}>返回預約查詢</button>
+            </div>
         </div>
+        
     );
 };
 

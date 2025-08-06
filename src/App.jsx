@@ -4,6 +4,7 @@ import BookingPage from "./pages/BookingPage";
 import BookingManagePage from "./pages/BookingManagePage";
 import CreatePaymentPage from "./pages/CreatePaymentPage";
 import PaymentResultPage from "./pages/PaymentResultPage";
+import EntryDateList from "./pages/EntryDateList";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/bookings" element={<BookingManagePage />} />
         <Route path="/create-payment" element={<CreatePaymentPage />} />
         <Route path="/PaymentResult" element={<PaymentResultPage />} />
+        <Route path="/EntryDateList" element={<EntryDateList />} />
       </Routes>
     </Router>
   );
