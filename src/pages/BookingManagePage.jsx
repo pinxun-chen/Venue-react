@@ -164,6 +164,7 @@ const BookingManagePage = () => {
                             <th>場地</th>
                             <th>日期</th>
                             <th>時段</th>
+                            <th>價格</th>
                             <th>姓名</th>
                             <th>Email</th>
                             <th>電話</th>
@@ -177,6 +178,7 @@ const BookingManagePage = () => {
                                 <td>{booking.venueName}</td>
                                 <td>{booking.bookingDate}</td>
                                 <td>{booking.label}</td>
+                                <td>{booking.venuePrice}</td>
 
                                 {/* 編輯欄位 or 文字顯示 */}
                                 {editingId === booking.id ? (
@@ -244,6 +246,7 @@ const BookingManagePage = () => {
                                         </td>
                                         <td>
                                             <button
+                                            onClick={() => navigate("/create-payment", { state: { booking } })}
                                                 style={{ marginLeft: "5px" }}
                                             >
                                                 繳費
