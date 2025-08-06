@@ -262,11 +262,11 @@ const BookingManagePage = () => {
                 </table>
             )}
 
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ margin: "20px" }}>
                 <button onClick={() => navigate("/EntryDateList")}>依日期查詢入帳資訊</button>
             </div>
 
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ margin: "20px" }}>
                 <button onClick={() => navigate("/")}>返回</button>
             </div>
         </div>
