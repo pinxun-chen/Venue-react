@@ -70,7 +70,9 @@ const CreatePaymentPage = () => {
                 {providers.map((p) => (
                     <li key={p.ins_acct_code} style={{ marginBottom: "1rem" }}>
                         <div>{p.ins_acct_name}</div>
-                        <button onClick={() => handlePay(p.ins_acct_code)}>使用此方式付款</button>
+                        <button onClick={() => handlePay(p.ins_acct_code)}>
+                            用此方式付款
+                        </button>
                     </li>
                 ))}
             </ul>
