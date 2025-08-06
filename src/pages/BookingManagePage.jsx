@@ -161,6 +161,7 @@ const BookingManagePage = () => {
                 >
                     <thead>
                         <tr>
+                            <th>訂單編號</th>
                             <th>場地</th>
                             <th>日期</th>
                             <th>時段</th>
@@ -175,6 +176,7 @@ const BookingManagePage = () => {
                     <tbody>
                         {bookings.map((booking) => (
                             <tr key={booking.id}>
+                                <td>{booking.id}</td>
                                 <td>{booking.venueName}</td>
                                 <td>{booking.bookingDate}</td>
                                 <td>{booking.label}</td>

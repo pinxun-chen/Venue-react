@@ -9,6 +9,7 @@ const CreatePaymentPage = () => {
     const [providers, setProviders] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    // getPaySvcProvider
     useEffect(() => {
         const fetchProviders = async () => {
             const res = await getPayProviders("govSystex1", "004");
@@ -22,18 +23,19 @@ const CreatePaymentPage = () => {
         fetchProviders();
     }, []);
 
+    // doPay 
     const handlePay = async (providerCode) => {
         const payload = {
             store_id: "govSystex1",
             pay_code: "004",
             provider_code: providerCode,
-            order_no: `ORDER${booking.id}`, // 或根據你需要的規則產生
-            pay_end_date: "20991231",
+            order_no: `${booking.id}`, // 或根據你需要的規則產生
+            pay_end_date: "99991231",
             total_amount: booking.venuePrice.toString(),
             opt_interface: "1",
             data: [
                 {
-                    item_name: booking.venueName,
+                    item_name: "場地租借",
                     unit_price: booking.venuePrice.toString(),
                     unit_count: "1",
                     unit_amount: booking.venuePrice.toString(),
