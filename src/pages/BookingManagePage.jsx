@@ -247,12 +247,16 @@ const BookingManagePage = () => {
                                             </button>
                                         </td>
                                         <td>
-                                            <button
-                                            onClick={() => navigate("/create-payment", { state: { booking } })}
-                                                style={{ marginLeft: "5px" }}
-                                            >
-                                                繳費
-                                            </button>
+                                            {booking.isPaid ? (
+                                                <button disabled style={{ color: "gray" }}>已繳費</button>
+                                            ) : (
+                                                <button
+                                                    onClick={() => navigate("/create-payment", { state: { booking } })}
+                                                    style={{ marginLeft: "5px" }}
+                                                >
+                                                    繳費
+                                                </button>
+                                            )}
                                         </td>
                                     </>
                                 )}
