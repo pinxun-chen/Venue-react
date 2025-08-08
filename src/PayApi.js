@@ -37,7 +37,7 @@ export const getPaymentByKey = (storeId, key) =>
 
 // 4. 查詢訂單狀態（用訂單編號）
 export const getPaymentInquiry = (storeId, orderNo) =>
-    post("/getPaymentInquiry", { store_id: storeId, order_no: orderNo });
+    post("/getPaymentInquiry", { store_id: storeId, order_no: String(orderNo) });
 
 // 5. 查詢入帳資訊
 export const getEntryDateList = (storeId, payCode, entryDate, payDate) =>

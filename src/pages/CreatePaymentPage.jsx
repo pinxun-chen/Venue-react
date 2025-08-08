@@ -3,19 +3,22 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getPayProviders, createPayOrder } from "../PayApi";
 
 const CreatePaymentPage = () => {
+    // 取得從上一頁傳來的 booking 資料
     const { state } = useLocation();
     const booking = state.booking;
 
-    const [providers, setProviders] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [providers, setProviders] = useState([]); // 可選擇的付款方式清單
+    const [loading, setLoading] = useState(true);  // 是否正在載入付款方式
 
     const navigate = useNavigate();
 
     // getPaySvcProvider
     useEffect(() => {
         const fetchProviders = async () => {
+            // 向後端請求付款業者列表
             const res = await getPayProviders("govSystex1", "004");
             if (res?.status === 0) {
+                // 成功取得付款方式
                 setProviders(res.data);
             } else {
                 alert("取得付款方式失敗");
@@ -27,6 +30,7 @@ const CreatePaymentPage = () => {
 
     // doPay 
     const handlePay = async (providerCode) => {
+        // 建立付款訂單的 payload
         const payload = {
             store_id: "govSystex1",
             pay_code: "004",
@@ -45,9 +49,11 @@ const CreatePaymentPage = () => {
             ],
         };
 
+        // 呼叫後端 API 建立付款訂單
         const res = await createPayOrder(payload);
         if (res?.status === 0) {
             const payInfo = res.data[0];
+            // 成功建立訂單後，若有付款網址，直接開啟新分頁
             if (payInfo.payment_url_web) {
                 window.open(payInfo.payment_url_web, "_blank");
             } else {
@@ -58,18 +64,21 @@ const CreatePaymentPage = () => {
         }
     };
 
+    // 載入中顯示提示
     if (loading) return <div>載入付款方式中...</div>;
 
     return (
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+
+            {/* 訂單基本資訊 */}
             <h2>地點: {booking.venueName}
                 <br /> 日期: {booking.bookingDate}
                 <br /> 時段: {booking.label}
                 <br /> 價格: {booking.venuePrice}
             </h2>
 
+            {/* 付款方式選擇列表 */}
             <h3>選擇付款方式 </h3>
-
             <ul>
                 {providers.map((p) => (
                     <li key={p.ins_acct_code} style={{ marginBottom: "1rem" }}>
@@ -85,7 +94,7 @@ const CreatePaymentPage = () => {
                 <button onClick={() => navigate("/bookings")}>返回預約查詢</button>
             </div>
         </div>
-        
+
     );
 };
 
